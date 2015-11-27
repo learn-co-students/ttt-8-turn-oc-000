@@ -19,11 +19,10 @@ end
 def move(board, position, char = 'X')
   board[position.to_i - 1] = char
 end
-require 'pry'
 
 def turn(board)
-  invalid_input = true
-  while invalid_input
+  invalid = true
+  while invalid
     puts "Please enter 1-9:"
     input = gets.strip
     invalid = false if valid_move?(board, input)
