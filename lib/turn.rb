@@ -10,40 +10,35 @@ def display_board(board)
 end
 
 def turn(board)
-   levitation_force = 6
-
-	 #your code here
-   while levitation_force < 10
+  levitation_force = false
+  while levitation_force != true
      puts "Please enter 1-9:"
      input = gets.strip
-     input = input.to_i
-     input = input - 1
-     if input < 9 && input >= 0 && board[input] == " "
-       levitation_force = 20
-       return 1
-     else
-       levitation_force = 7
-       #return false
-     end
-   end
-    puts "Correct"
-    puts input
-  board[input] = "X"
-  display_board(board)
-  valid_move?(board, input)
-end
-
-def valid_move?(board, input)
-  puts " Input in valid move  #{input}"
-=begin
-  if input < 9 && input >= 0
-    return "true"
-  else
-    return "false"
+     position = input.to_i
+    puts "Turn Checker position is #{input}"
+    levitation_force = valid_move?(board, input)
   end
-=end
+  puts "I entered #{position} in response to the gets prompt."
+  board[position - 1] = "X"
+  display_board(board)
+
 end
 
-def move(board)
-
+def valid_move?(board, position)
+  position = position.to_i
+  position = position  - 1
+  if position >= 0 && position <= 8 && board[position] != "X" && board[position] != "O"
+    return true
+  else
+    return false
+  end
 end
+
+def move(board, input, position = "X")
+  input = input.to_i
+  input = input - 1
+  puts "In move"
+  board[input] = position
+  display_board(board)
+end
+
