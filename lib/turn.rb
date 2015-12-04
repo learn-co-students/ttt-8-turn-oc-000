@@ -9,7 +9,7 @@ def turn(board)
 puts "Please enter 1-9:"
 position = gets.chomp
     valid_move?(board, position)==false
-      
+
 end
 end
 
